@@ -1,5 +1,5 @@
-from nltk.corpus import words
 import random
+from random_words import RandomWords
 
 internet_slang = {  'afk': 'away from keyboard',
                     'ama': 'ask me anything',
@@ -37,18 +37,18 @@ internet_slang = {  'afk': 'away from keyboard',
                     'yolo': 'you only live once'
                 }
 
-slang = random.choice(a for a in internet_slang.keys()])
+slang = random.choice([a for a in internet_slang.keys()])
 meaning = internet_slang[slang].split()
 
 new_meaning = ''
 real_meaning = ''
 for i in range(len(slang)):
-    word = random.choice([word for word in word.words("en-basic") if word[0] == slang[i].lower()])
-    new_meaning += word
+    w = random.choice([s for s in RandomWords().random_words(slang[i].lower()) and s != meaning[i] and s not in new_meaning])
+    new_meaning += w
     real_meaning += meaning[i]
     if i < len(slang)-1:
-        length = max(len(word), len(meaning[i])) - min(len(word), len(meaning[i])) + 1
-        if len(word) < len(meaning[i]):
+        length = max(len(w), len(meaning[i])) - min(len(w), len(meaning[i])) + 1
+        if len(w) < len(meaning[i]):
             new_meaning += ' ' * length
             real_meaning += ' '
         else:
