@@ -43,7 +43,7 @@ meaning = internet_slang[slang].split()
 new_meaning = ''
 real_meaning = ''
 for i in range(len(slang)):
-    w = random.choice([s for s in RandomWords().random_words(slang[i].lower()) and s != meaning[i] and s not in new_meaning])
+    w = random.choice([s for s in RandomWords().random_words(slang[i].lower()) if s != meaning[i] and s not in new_meaning])
     new_meaning += w
     real_meaning += meaning[i]
     if i < len(slang)-1:
