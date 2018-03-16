@@ -1,1 +1,0 @@
-# tiny-computer-generated-booklet
